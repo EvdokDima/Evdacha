@@ -1,25 +1,27 @@
 ﻿import React from "react";
 import FocusBlock from "./FocusBlock";
-import { skills, softSkills } from "../data/content";
+import AnimatedText from "./AnimatedText";
 
-const skillGroups = [
-  { key: "backend", title: "Backend" },
-  { key: "frontend", title: "Frontend" },
-  { key: "desktop", title: "Desktop" },
-];
+const skillGroups = ["backend", "frontend", "desktop"];
 
-export default function Skills() {
+export default function Skills({
+  skills,
+  softSkills,
+  title,
+  softSkillsTitle,
+  skillGroups: groupTitles,
+}) {
   return (
     <FocusBlock as="section" className="section" id="skills">
-      <h2>Skills</h2>
+      <h2><AnimatedText text={title} /></h2>
 
       <div className="skills-grid">
-        {skillGroups.map((group) => (
-          <div className="skills-group" key={group.key}>
-            <h3>{group.title}</h3>
+        {skillGroups.map((groupKey) => (
+          <div className="skills-group" key={groupKey}>
+            <h3><AnimatedText text={groupTitles[groupKey]} /></h3>
             <ul className="skills-list">
-              {skills[group.key].map((skill) => (
-                <li key={skill}>{skill}</li>
+              {skills[groupKey].map((skill) => (
+                <li key={skill}><AnimatedText text={skill} /></li>
               ))}
             </ul>
           </div>
@@ -27,10 +29,10 @@ export default function Skills() {
       </div>
 
       <div className="card">
-        <h3>Soft Skills</h3>
+        <h3><AnimatedText text={softSkillsTitle} /></h3>
         <ul className="bullet-list">
           {softSkills.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}><AnimatedText text={item} /></li>
           ))}
         </ul>
       </div>

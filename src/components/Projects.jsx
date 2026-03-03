@@ -1,22 +1,22 @@
 ﻿import React from "react";
 import FocusBlock from "./FocusBlock";
-import { projects } from "../data/content";
+import AnimatedText from "./AnimatedText";
 
-export default function Projects() {
+export default function Projects({ projects, title, sourceCodeLabel, stackLabel }) {
   return (
     <FocusBlock as="section" className="section" id="projects">
-      <h2>Projects</h2>
+      <h2><AnimatedText text={title} /></h2>
 
       {projects.map((project) => (
         <FocusBlock as="article" className="card" key={project.name} minOpacity={0.28}>
           <div className="card-head">
-            <h3>{project.name}</h3>
+            <h3><AnimatedText text={project.name} /></h3>
             <a href={project.link} target="_blank" rel="noreferrer">
-              Source Code
+              <AnimatedText text={sourceCodeLabel} />
             </a>
           </div>
-          <p>{project.description}</p>
-          <p className="card-stack">Stack: {project.stack}</p>
+          <p><AnimatedText text={project.description} /></p>
+          <p className="card-stack"><AnimatedText text={`${stackLabel}: ${project.stack}`} /></p>
         </FocusBlock>
       ))}
     </FocusBlock>

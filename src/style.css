@@ -70,6 +70,7 @@ a {
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
   z-index: 20;
+  gap: 10px;
 }
 
 .brand {
@@ -90,6 +91,7 @@ a {
   gap: 4px;
   flex-wrap: wrap;
   justify-content: flex-end;
+  flex: 1;
 }
 
 .nav-links a {
@@ -106,6 +108,26 @@ a {
   background: rgba(143, 177, 255, 0.16);
 }
 
+.lang-toggle {
+  min-width: 46px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(137, 166, 224, 0.5);
+  background: rgba(137, 166, 224, 0.14);
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.lang-toggle:hover {
+  background: rgba(255, 180, 118, 0.14);
+  border-color: rgba(255, 180, 118, 0.5);
+}
+
 .hero {
   min-height: 100vh;
   display: grid;
@@ -117,6 +139,59 @@ a {
   transform-origin: center;
   transition: opacity 0.14s linear, transform 0.14s linear, filter 0.14s linear;
   will-change: opacity, transform, filter;
+}
+
+.animated-text {
+  position: relative;
+  display: inline-grid;
+  align-items: start;
+}
+
+.animated-text.is-swapping .text-old,
+.animated-text.is-swapping .text-new {
+  grid-area: 1 / 1;
+  display: block;
+  animation-duration: 0.44s;
+  animation-timing-function: cubic-bezier(0.22, 0.8, 0.24, 1);
+  animation-fill-mode: both;
+  animation-delay: var(--swap-delay, 0ms);
+}
+
+.animated-text.is-swapping .text-old {
+  animation-name: text-out-down;
+}
+
+.animated-text.is-swapping .text-new {
+  animation-name: text-in-down;
+}
+
+.animated-text .text-old {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+@keyframes text-out-down {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes text-in-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }
 
 .hero-content {
@@ -411,6 +486,10 @@ a {
 }
 
 @media (max-width: 640px) {
+  .navbar {
+    gap: 6px;
+  }
+
   .nav-links a {
     padding: 7px 9px;
     font-size: 0.8rem;
@@ -420,6 +499,12 @@ a {
     width: 36px;
     height: 36px;
     font-size: 0.84rem;
+  }
+
+  .lang-toggle {
+    min-width: 42px;
+    height: 34px;
+    font-size: 0.76rem;
   }
 
   .section,
@@ -446,5 +531,10 @@ a {
   .hero-link,
   .contact-link {
     transition: none;
+  }
+
+  .animated-text.is-swapping .text-old,
+  .animated-text.is-swapping .text-new {
+    animation: none;
   }
 }

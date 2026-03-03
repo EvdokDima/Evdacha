@@ -1,8 +1,8 @@
 ﻿import React from "react";
 import FocusBlock from "./FocusBlock";
-import { contacts } from "../data/content";
+import AnimatedText from "./AnimatedText";
 
-export default function Footer() {
+export default function Footer({ contacts }) {
   return (
     <FocusBlock as="footer" className="footer" id="contact" minOpacity={0.35}>
       {contacts.map((contact) => (
@@ -13,8 +13,8 @@ export default function Footer() {
           target={contact.href.startsWith("http") ? "_blank" : undefined}
           rel={contact.href.startsWith("http") ? "noreferrer" : undefined}
         >
-          <span>{contact.label}</span>
-          <strong>{contact.value}</strong>
+          <span><AnimatedText text={contact.label} /></span>
+          <strong><AnimatedText text={contact.value} /></strong>
         </a>
       ))}
     </FocusBlock>
