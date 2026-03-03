@@ -1,6 +1,6 @@
 ﻿export const profile = {
   fullName: "Dmitry Sergeevich Evdokimov",
-  role: "Backend / Desktop Developer",
+  role: "Backend / Fullstack / Desktop Developer",
   summary:
     "I build production-ready APIs and desktop applications with a focus on reliability, clean architecture, and maintainability.",
   intro:
@@ -67,20 +67,28 @@ export const projects = [
   },
 ];
 
-export const skills = [
-  "Python",
-  "FastAPI",
-  "SQLAlchemy",
-  "PostgreSQL",
-  "MSSQL",
-  "SQLite",
-  "Docker",
-  "C#",
-  "WPF",
-  "WinForms",
-  ".NET",
-  "REST API Design",
-];
+export const skills = {
+  backend: [
+    "Python",
+    "FastAPI",
+    "SQLAlchemy",
+    "PostgreSQL",
+    "MSSQL",
+    "SQLite",
+    "Docker",
+    "REST API Design",
+  ],
+  frontend: [
+    "React",
+    "TypeScript",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "Vite",
+    "Responsive UI",
+  ],
+  desktop: ["C#", "WPF", "WinForms", ".NET", "SMTP Integration"],
+};
 
 export const softSkills = [
   "Initiative and execution",

@@ -316,21 +316,40 @@ a {
   background: var(--accent);
 }
 
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  list-style: none;
-  margin-top: 10px;
+.skills-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.skills li {
+.skills-group {
+  border: 1px solid rgba(129, 156, 209, 0.32);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(15, 20, 30, 0.72);
+}
+
+.skills-group h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.skills-list li {
   border-radius: 999px;
-  padding: 8px 13px;
+  padding: 7px 12px;
   border: 1px solid rgba(137, 166, 224, 0.5);
   background: rgba(137, 166, 224, 0.14);
   color: #dce6ff;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
 }
 
 .footer {
@@ -383,6 +402,10 @@ a {
   }
 
   .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
     grid-template-columns: 1fr;
   }
 }
